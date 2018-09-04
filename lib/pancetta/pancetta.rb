@@ -37,8 +37,8 @@ module Pancetta
       # ファイル内での絞り込み
       filtered_blocks =
         blocks
-        .map{ |block| select_modified(block, diff_map) }
-        .reject{ |block| block.issues.empty? }
+        .map { |block| select_modified(block, diff_map) }
+        .reject { |block| block.issues.empty? }
 
       unless filtered_blocks.empty?
         formatted = formatter.format(base_commit, filtered_blocks)
@@ -58,7 +58,7 @@ module Pancetta
 
       modified_issues = block.issues.select do |issue|
         if diff_map.key?(rel_path)
-          if diff_map[rel_path].any?{ |dr| dr.include?(issue.line) }
+          if diff_map[rel_path].any? { |dr| dr.include?(issue.line) }
             # 変更差分に含まれる
             true
           else

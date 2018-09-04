@@ -45,8 +45,13 @@ module Pancetta
 
         lines << ""
 
-        block.issues.each do |line|
-          lines << "- " + line.to_short
+        block.issues.each do |issue|
+          lines << "- %s %d:%d: %s" % [
+            issue.severity,
+            issue.line,
+            issue.column,
+            issue.message
+          ]
         end
 
         lines << ""

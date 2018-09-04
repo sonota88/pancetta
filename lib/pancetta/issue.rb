@@ -1,7 +1,7 @@
 module Pancetta
 
   class Issue
-    attr_reader :line, :column, :message
+    attr_reader :severity, :line, :column, :message
 
     def initialize(severity, line, column, message, rule)
       @severity = severity

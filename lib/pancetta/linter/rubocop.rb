@@ -28,13 +28,13 @@ module Pancetta
 
       private
 
-      def to_issue(off)
+      def to_issue(offense)
         Issue.from_plain(
-          "message"  => off["message"],
-          "rule"     => off["cop_name"],
-          "line"     => off["location"]["line"],
-          "column"   => off["location"]["column"],
-          "severity" => off["severity"]
+          "message"  => offense["message"],
+          "rule"     => offense["cop_name"],
+          "line"     => offense["location"]["line"],
+          "column"   => offense["location"]["column"],
+          "severity" => offense["severity"]
         )
       end
     end

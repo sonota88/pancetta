@@ -8,7 +8,7 @@ require 'pancetta/block'
 require 'pancetta/issue'
 
 module Pancetta
-  class Pancetta
+  class Model
     def run(base_commit)
       require 'pancetta/linter/rubocop'
       linter = Linter::Rubocop.new

@@ -3,9 +3,9 @@ module Pancetta
     class Default
       def format(base_commit, blocks)
         lines = []
-        lines << "base commit: #{base_commit}"
-        lines << "----"
-        lines << ""
+        lines << 'base commit: #{base_commit}'
+        lines << '----'
+        lines << ''
 
         blocks.each do |block|
           lines += format_block(block)
@@ -18,15 +18,15 @@ module Pancetta
 
       def format_block(block)
         lines = []
-        lines << "%s (%s)" % [
+        lines << '%s (%s)' % [
           File.basename(block.path),
           block.path
         ]
 
-        lines << ""
+        lines << ''
 
         block.issues.each do |issue|
-          lines << "- %s %d:%d: %s" % [
+          lines << '- %s %d:%d: %s' % [
             issue.severity,
             issue.line,
             issue.column,
@@ -34,7 +34,7 @@ module Pancetta
           ]
         end
 
-        lines << ""
+        lines << ''
         lines
       end
     end

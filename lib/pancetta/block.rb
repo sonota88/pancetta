@@ -8,8 +8,8 @@ module Pancetta
     end
 
     def self.from_plain(plain)
-      path = plain["path"]
-      issues = plain["issues"].map do |plain_issue|
+      path = plain['path']
+      issues = plain['issues'].map do |plain_issue|
         Issue.from_plain(plain_issue)
       end
 
@@ -18,8 +18,8 @@ module Pancetta
 
     def to_plain
       {
-        "path" => @path,
-        "issues" => @issues.map(&:to_plain)
+        'path' => @path,
+        'issues' => @issues.map(&:to_plain)
       }
     end
 

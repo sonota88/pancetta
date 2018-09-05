@@ -1,19 +1,19 @@
 # coding: utf-8
 
-require "json"
-require "yaml"
+require 'json'
+require 'yaml'
 
-require "pancetta/diff"
-require "pancetta/block"
-require "pancetta/issue"
+require 'pancetta/diff'
+require 'pancetta/block'
+require 'pancetta/issue'
 
 module Pancetta
   class Pancetta
     def run(base_commit)
-      require "pancetta/linter/rubocop"
+      require 'pancetta/linter/rubocop'
       linter = Linter::Rubocop.new
 
-      require "pancetta/formatter/default"
+      require 'pancetta/formatter/default'
       formatter = Formatter::Default.new
 
       git_diff_out = `git diff #{base_commit} --`

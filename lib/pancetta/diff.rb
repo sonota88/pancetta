@@ -1,6 +1,4 @@
-# coding: utf-8
-
-require "pancetta/diff_range"
+require 'pancetta/diff_range'
 
 module Pancetta
   class Diff
@@ -27,7 +25,7 @@ module Pancetta
     def self.extract_path(lines)
       re = %r{^\+\+\+ b/(.+)}
 
-      path_line = lines.find{ |line| re =~ line }
+      path_line = lines.find { |line| re =~ line }
       return nil unless path_line
 
       re =~ path_line
@@ -38,14 +36,13 @@ module Pancetta
       re = /^@@ \-(.+?) \+(\d+),(\d+) @@/
 
       lines
-        .select{ |line| re =~ line }
-        .map{ |line|
+        .select { |line| re =~ line }
+        .map { |line|
           re =~ line
           from = Regexp.last_match(2).to_i
           len = Regexp.last_match(3).to_i
           DiffRange.new(from, len)
         }
     end
-
   end
 end

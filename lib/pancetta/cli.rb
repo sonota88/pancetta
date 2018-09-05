@@ -7,6 +7,5 @@ module Pancetta
 
       Model.new.run(base_commit)
     end
-
   end
 end

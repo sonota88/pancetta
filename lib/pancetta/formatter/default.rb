@@ -3,7 +3,7 @@ module Pancetta
     class Default
       def format(base_commit, blocks)
         lines = []
-        lines << 'base commit: #{base_commit}'
+        lines << "base commit: #{base_commit}"
         lines << '----'
         lines << ''
 

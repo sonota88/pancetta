@@ -3,6 +3,12 @@ AllCops:
   Exclude:
     - vendor/bundle/**/*
 
+Layout/SpaceInsideRangeLiteral:
+  Enabled: false
+
+Naming/UncommunicativeMethodParamName:
+  Enabled: false
+
 Style/FormatStringToken:
   Enabled: false
 
@@ -15,9 +21,6 @@ Style/AsciiComments:
 Style/Documentation:
   Enabled: false
 
-Layout/SpaceInsideRangeLiteral:
-  Enabled: false
-
 Style/BlockComments:
   Enabled: false
 
@@ -25,4 +28,30 @@ Style/IfUnlessModifier:
   Enabled: false
 
 Style/GuardClause:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Encoding:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+Style/UnneededPercentQ:
+  Enabled: false
+
+Style/HashSyntax:
+  Enabled: false
+
+# TODO
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Style/MutableConstant:
   Enabled: false

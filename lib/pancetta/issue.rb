@@ -1,5 +1,4 @@
 module Pancetta
-
   class Issue
     attr_reader :severity, :line, :column, :message
 
@@ -21,5 +20,4 @@ module Pancetta
       )
     end
   end
-
 end

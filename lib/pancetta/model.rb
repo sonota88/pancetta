@@ -5,9 +5,9 @@ module Pancetta
     def run(linter_type)
       case linter_type
       when :checkstyle
-        conf = YAML.load(File.read("checkstyle.yaml"))
-        p conf
-        system("java", "-jar", conf["jar_path"], "-c", conf["conf_path"], "src/")
+        require "pancetta/linter/checkstyle"
+        linter = Linter::Checkstyle.new
+        linter.run
       when :standardrb
         system "bundle exec standardrb"
       else

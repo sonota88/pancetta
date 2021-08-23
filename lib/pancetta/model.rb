@@ -9,7 +9,9 @@ module Pancetta
         linter = Linter::Checkstyle.new
         linter.run
       when :standardrb
-        system "bundle exec standardrb"
+        require "pancetta/linter/standardrb"
+        linter = Linter::Standardrb.new
+        linter.run
       else
         raise "not supported"
       end

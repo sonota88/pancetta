@@ -1,0 +1,13 @@
+#!/bin/bash
+
+_get_bin_dir() {
+  if [ -L $0 ] ; then
+    dirname $(readlink $0)
+  else
+    echo $(cd $(dirname $0); pwd)
+  fi
+
+  return 0
+}
+
+$(_get_bin_dir)/pancetta.rb "$@"

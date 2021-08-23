@@ -1,0 +1,2 @@
+jar_path: /path/to/checkstyle-x.x-all.jar
+conf_path: /path/to/checks.xml

@@ -1,4 +1,5 @@
 require "yaml"
+require "pp"
 
 require "pancetta/diff"
 
@@ -18,11 +19,19 @@ module Pancetta
         end
 
       git_diff_out = `git diff #{base_commit} --`
-      $stderr.puts git_diff_out, "----"
+      # $stderr.puts git_diff_out, "----"
 
       diff_blocks = Diff.slice(git_diff_out)
-      require "pp"
-      $stderr.puts diff_blocks.pretty_inspect, "----"
+      # $stderr.puts diff_blocks.pretty_inspect, "----"
+
+      diff_map = {}
+      diff_blocks.each do |lines|
+        path = Diff.extract_path(lines)
+        if linter.target?(path)
+          diff_map[path] = Diff.extract_ranges(lines)
+        end
+      end
+      $stderr.puts diff_map.pretty_inspect, "----"
 
       linter.run
     end

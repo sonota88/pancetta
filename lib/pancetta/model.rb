@@ -1,5 +1,7 @@
 require "yaml"
 
+require "pancetta/diff"
+
 module Pancetta
   class Model
     def run(linter_type, base_commit)
@@ -16,7 +18,11 @@ module Pancetta
         end
 
       git_diff_out = `git diff #{base_commit} --`
-      $stderr.puts git_diff_out
+      $stderr.puts git_diff_out, "----"
+
+      diff_blocks = Diff.slice(git_diff_out)
+      require "pp"
+      $stderr.puts diff_blocks.pretty_inspect, "----"
 
       linter.run
     end

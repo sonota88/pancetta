@@ -2,7 +2,7 @@ require "yaml"
 
 module Pancetta
   class Model
-    def run(linter_type)
+    def run(linter_type, base_commit)
       linter =
         case linter_type
         when :checkstyle
@@ -14,6 +14,9 @@ module Pancetta
         else
           raise "not supported"
         end
+
+      git_diff_out = `git diff #{base_commit} --`
+      $stderr.puts git_diff_out
 
       linter.run
     end

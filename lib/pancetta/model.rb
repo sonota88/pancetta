@@ -33,7 +33,11 @@ module Pancetta
       end
       $stderr.puts diff_map.pretty_inspect, "----"
 
-      linter.run
+      target_files = diff_map.keys
+
+      raw_output = linter.run(target_files)
+
+      puts raw_output
     end
   end
 end

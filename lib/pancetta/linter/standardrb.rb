@@ -1,8 +1,9 @@
 module Pancetta
   module Linter
     class Standardrb
-      def run
-        system "bundle exec standardrb"
+      def run(files)
+        file_list = files.join(" ")
+        `bundle exec standardrb -f json #{file_list}`
       end
 
       def target?(path)

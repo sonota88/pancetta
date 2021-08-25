@@ -1,15 +1,17 @@
+require_relative "checkstyle_utils"
+
 module Pancetta
   module Linter
     class Checkstyle
       def run(files)
         conf = YAML.load(File.read("checkstyle.yaml"))
-        p conf
-        system(
+        cmd = [
           "java", "-jar", conf["jar_path"],
           "-c", conf["conf_path"],
           "-f=xml",
           *files
-        )
+        ].join(" ")
+        `#{cmd}`
       end
 
       def target?(path)
@@ -17,7 +19,7 @@ module Pancetta
       end
 
       def parse(raw_output)
-        raise "TODO"
+        CheckstyleUtils.parse(raw_output)
       end
     end
   end

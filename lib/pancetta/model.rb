@@ -39,7 +39,7 @@ module Pancetta
       # $stderr.puts raw_output
 
       blocks = linter.parse(raw_output)
-      $stderr.puts blocks.pretty_inspect, "----"
+      # $stderr.puts blocks.pretty_inspect, "----"
 
       # format
 

@@ -40,6 +40,15 @@ module Pancetta
 
       blocks = linter.parse(raw_output)
       $stderr.puts blocks.pretty_inspect, "----"
+
+      # format
+
+      unless blocks.empty?
+        require "pancetta/formatter/default"
+        formatter = Formatter::Default.new
+        formatted = formatter.format(base_commit, blocks)
+        print formatted
+      end
     end
   end
 end

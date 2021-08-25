@@ -15,6 +15,10 @@ module Pancetta
       def target?(path)
         path.end_with?(".java")
       end
+
+      def parse(raw_output)
+        raise "TODO"
+      end
     end
   end
 end

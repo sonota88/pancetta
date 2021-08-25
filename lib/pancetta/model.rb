@@ -31,13 +31,15 @@ module Pancetta
           diff_map[path] = Diff.extract_ranges(lines)
         end
       end
-      $stderr.puts diff_map.pretty_inspect, "----"
+      # $stderr.puts diff_map.pretty_inspect, "----"
 
       target_files = diff_map.keys
 
       raw_output = linter.run(target_files)
+      # $stderr.puts raw_output
 
-      puts raw_output
+      blocks = linter.parse(raw_output)
+      $stderr.puts blocks.pretty_inspect, "----"
     end
   end
 end

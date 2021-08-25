@@ -1,6 +1,6 @@
 module Pancetta
   module Formatter
-    class Default
+    class Simple
       def format(base_commit, blocks)
         lines = []
         lines << "base commit: #{base_commit}"

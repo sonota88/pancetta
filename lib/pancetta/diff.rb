@@ -26,10 +26,18 @@ module Pancetta
       re = %r{^\+\+\+ b/(.+)}
 
       path_line = lines.find { |line| re =~ line }
-      return nil unless path_line
+      if path_line
+        re =~ path_line
+        return Regexp.last_match(1)
+      end
+      
+      path_line = lines.find { |line| line.start_with?("rename to ") }
+      if path_line
+        m = path_line.match(/^rename to (.+)/)
+        return m ? m[1] : nil
+      end
 
-      re =~ path_line
-      Regexp.last_match(1)
+      nil
     end
 
     def self.extract_ranges(lines)
